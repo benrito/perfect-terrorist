@@ -1,28 +1,140 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <title>d3.js ~ Force-Directed Graph</title>
-    <script type="text/javascript" src="js/d3.v2.js?2.8.1"></script>
-    <script type="text/javascript" src="js/underscore-min.js"></script>
-    <style type="text/css">
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/player_style.css">
+  <script src="js/libs/modernizr-2.5.3.min.js"></script>
+  <script type="text/javascript" src="js/d3.v2.js?2.8.1"></script>
+  <script type="text/javascript" src="js/underscore-min.js"></script>
+  <style type="text/css">
 
 @import url("css/style.css?1.10.0");
 @import url("css/syntax.css?1.6.0");
       
-      #content { background: #444; position: relative; }
-      #content, #content > div { width: 900px; height: 500px; }
-      #content > div { position: absolute; top: 0; left: 0; }
+    #content { background: #444; position: relative; }
+    #content, #content > div { width: 900px; height: 500px; }
+    #content > div { position: absolute; top: 0; left: 0; }
       
-    </style>
-  </head>
-  <body>
-    <input type="range" min="0" max="20" value="0" onchange="update(this.value)"></input>
-    <div id="content">
-      <div id="background"></div>
-      <div id="chart"></div>
-      <div id="foreground"></div>
+  </style>
+</head>
+<body>
+  <input type="range" min="0" max="20" value="0" onchange="update(this.value)"></input>
+  
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+  <header>
+
+  </header>
+  
+  <div id="content" role="main">
+    <div id="background"></div>
+    <div id="chart"></div>
+    <div id="foreground">
+      <p class="player">
+        <span id="playtoggle" />
+        <span id="gutter">
+          <span id="loading" />
+          <span id="handle" class="ui-slider-handle" />
+        </span>
+        <span id="timeleft" />
+      </p>
     </div>
-    <script type="text/javascript" src="js/timeline-graph.js"></script>
-  </body>
-</html>
+  </div>
+  
+  <footer>
+  </footer>
+  
+  <script type="text/javascript" src="js/timeline-graph.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.ui.min.js"></script>
+    <script>
+  $(function() {
+  	initAudio();
+  });
+  function initAudio() {
+
+  	var supportsAudio = !!document.createElement('audio').canPlayType,
+  			audio,
+  			loadingIndicator,
+  			positionIndicator,
+  			timeleft,
+  			loaded = false,
+  			manualSeek = false;
+
+  	if (supportsAudio) {
+
+  		var episodeTitle = $('body')[0].id;
+
+  		var player = '<p class="player">\
+  									  <span id="playtoggle" />\
+  									  <span id="gutter">\
+  									    <span id="loading" />\
+  									    <span id="handle" class="ui-slider-handle" />\
+  									  </span>\
+  									  <span id="timeleft" />\
+  									  <audio preload="metadata">\
+  		<source src="videos/blind_willie.mp3" type="audio/mpeg"></source>\
+        <source src="videos/blind_willie.ogg" type="audio/vorbis"></source>\
+  										</audio>\
+  									</p>';									
+
+  		$(player).insertAfter("#body");
+
+  		audio = $('.player audio').get(0);
+  		loadingIndicator = $('.player #loading');
+  		positionIndicator = $('.player #handle');
+  		timeleft = $('.player #timeleft');
+
+
+  		$(audio).bind('timeupdate', function() {
+
+  			var rem = parseInt(audio.duration - audio.currentTime, 10),
+  					pos = (audio.currentTime / audio.duration) * 100,
+  					mins = Math.floor(rem/60,10),
+  					secs = rem - mins*60;
+
+  			timeleft.text('-' + mins + ':' + (secs < 10 ? '0' + secs : secs));
+  			if (!manualSeek) { positionIndicator.css({left: pos + '%'}); }
+  			if (!loaded) {
+  				loaded = true;
+
+  				$('.player #gutter').slider({
+  						value: 0,
+  						step: 0.01,
+  						orientation: "horizontal",
+  						range: "min",
+  						max: audio.duration,
+  						animate: true,					
+  						slide: function(){							
+  							manualSeek = true;
+  						},
+  						stop:function(e,ui){
+  							manualSeek = false;					
+  							audio.currentTime = ui.value;
+  						}
+  					});
+  			}
+
+  		}).bind('play',function(){
+  			$("#playtoggle").addClass('playing');		
+  		}).bind('pause ended', function() {
+  			$("#playtoggle").removeClass('playing');		
+  		});		
+
+  		$("#playtoggle").click(function() {			
+  			if (audio.paused) {	audio.play();	} 
+  			else { audio.pause(); }			
+  		});
+
+  	}	
+  }
+    </script>
+</body>
