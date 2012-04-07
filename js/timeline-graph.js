@@ -1,5 +1,5 @@
-var width = 960,
-    height = 200;
+var width = 900,
+    height = 500;
 
 var tx = 10000;
 

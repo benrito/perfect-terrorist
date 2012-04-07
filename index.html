@@ -9,12 +9,20 @@
 
 @import url("css/style.css?1.10.0");
 @import url("css/syntax.css?1.6.0");
-
+      
+      #content { background: #444; position: relative; }
+      #content, #content > div { width: 900px; height: 500px; }
+      #content > div { position: absolute; top: 0; left: 0; }
+      
     </style>
   </head>
   <body>
     <input type="range" min="0" max="20" value="0" onchange="update(this.value)"></input>
-    <div id="chart" style="width: 960px; height: 500px;"></div>
+    <div id="content">
+      <div id="background"></div>
+      <div id="chart"></div>
+      <div id="foreground"></div>
+    </div>
     <script type="text/javascript" src="js/timeline-graph.js"></script>
   </body>
 </html>
