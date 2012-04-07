@@ -1,6 +1,6 @@
 var popup;
 
-function createPopup(thisnode, title, imgsrc, videosrc, x, y){
+function createPopup(thisnode, title, blurb, imgsrc, videosrc, x, y){
 	if (popup) {
 	  removePopup();
 	}
@@ -9,8 +9,9 @@ function createPopup(thisnode, title, imgsrc, videosrc, x, y){
   // {
   	popup = $('<div id="popup"/>');
   	var $title = $('<h2>' + title + '</h2>');
+	var $blurb = $('<h4>' + blurb + '</h4>');
 
-  	popup.append("<a id='popup_link' href='" + videosrc + "'><img src='photos/" + imgsrc + "'></a>").append($title);
+  	popup.append("<a id='popup_link' href='" + videosrc + "'><img src='photos/" + imgsrc + "'></a>").append($title).append($blurb);
   	popup.append("<a id='closebox' class='close' href='#'>X</a>");
 
   	popup.css("top", y).css("left", x);
