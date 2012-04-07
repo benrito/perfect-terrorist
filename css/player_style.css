@@ -746,9 +746,10 @@ footer a:active {
 
 .player {
 	display: block;
-	height: 100%;
-	width:500px;
+	height: 500px;
+	width: 10px;
 	position: absolute;
+	left: 50%;
 	margin: 0px auto;
 	-webkit-box-shadow: 0 -1px 0 rgba(20, 30, 40, .75);
 	-moz-box-shadow: 0 -1px 0 rgba(20, 30, 40, .75);
@@ -766,7 +767,7 @@ footer a:active {
 #playtoggle {
 	position: absolute;
 	top: 9px;
-	left: 10px;
+	left: -50px;
 	width: 30px;
 	height: 30px;
 	background: url(../img/player.png) no-repeat -30px 0;
@@ -809,14 +810,6 @@ footer a:active {
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
 	border-radius: 5px;
-	background: #546374;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#242f3b), to(#516070));
-	background: -moz-linear-gradient(top, #242f3b, #516070);
-	background: linear-gradient(top, #242f3b, #516070);
-	-webkit-box-shadow: 0 1px 4px rgba(20, 30, 40, .75) inset, 0 1px 0 rgba(176, 187, 198, .5);
-	-moz-box-shadow: 0 1px 4px rgba(20, 30, 40, .75) inset, 0 1px 0 rgba(176, 187, 198, .5);
-	-o-box-shadow: 0 1px 4px rgba(20, 30, 40, .75) inset, 0 1px 0 rgba(176, 187, 198, .5);
-	box-shadow: 0 1px 4px rgba(20, 30, 40, .75) inset, 0 1px 0 rgba(176, 187, 198, .5);
 }
 
 #wrapper #gutter {
@@ -824,6 +817,7 @@ footer a:active {
 }
 
 #loading {
+	display: hidden;
 	background: #fff;
 	background: #939eaa;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eaeef1), to(#c7cfd8));
