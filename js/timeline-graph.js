@@ -1,7 +1,7 @@
 var width = 900,
     height = 500;
 
-var tx = 10000;
+var tx = 750;
 
 var colors =
   { blue: "#3399cc",
@@ -15,8 +15,8 @@ var length = 20;
 
 var nodes = [
   { id: 0,
-    x:  100,
-    y:  100,
+    x:  450,
+    y:  0,
     size: 20,
     in_time: 0,
     out_time: 20,
@@ -114,8 +114,8 @@ var update = function(t) {
   var link_enter = link.enter().append("line")
                         .attr("class", "link")
                         .style("stroke", colors.gray)
-                                  .attr("x1", function(d) { return node_source(indexed_nodes[d.source]).x; })
-                                  .attr("y1", function(d) { return node_source(indexed_nodes[d.source]).y; })
+                                  .attr("x1", function(d) { return node_source(indexed_nodes[d.target]).x; })
+                                  .attr("y1", function(d) { return node_source(indexed_nodes[d.target]).y; })
                                   .attr("x2", function(d) { return node_source(indexed_nodes[d.target]).x; })
                                   .attr("y2", function(d) { return node_source(indexed_nodes[d.target]).y; });
   
@@ -132,27 +132,27 @@ var update = function(t) {
                 .attr("cx", function(d){ return node_source(d).x; })
                 .attr("cy", function(d){ return node_source(d).y; });
   
-  var node_exit = node.exit().transition(tx)              
+  var node_exit = node.exit().transition().duration(tx)              
                       .attr("cx", function(d){ return node_source(d).x; })
                       .attr("cy", function(d){ return node_source(d).y; })
                       .remove();
   
   nodes[0].y = frac * height;
   
-  link_enter.transition(tx)
+  link_enter.transition().duration(tx)
             .attr("x1", function(d) { return node_source(indexed_nodes[d.source]).x; })
             .attr("y1", function(d) { return node_source(indexed_nodes[d.source]).y; })
             .attr("x2", function(d) { return node_source(indexed_nodes[d.target]).x; })
             .attr("y2", function(d) { return node_source(indexed_nodes[d.target]).y; })
   
-  link.transition(tx)
+  link.transition().duration(tx)
     .attr("x1", function(d) { return indexed_nodes[d.source].x; })
     .attr("y1", function(d) { return indexed_nodes[d.source].y; })
     .attr("x2", function(d) { return indexed_nodes[d.target].x; })
     .attr("y2", function(d) { return indexed_nodes[d.target].y; });
 
   [node, node_enter].forEach(function(g){
-    g.transition(tx)
+    g.transition().duration(tx)
      .attr("cx", function(d) { return d.x; })
      .attr("cy", function(d) { return d.y; });
   });
