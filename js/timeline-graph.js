@@ -3,7 +3,7 @@ var width = 900,
 
 var tx = 750;
 
-var debug = true;
+var debug = false;
 
 var colors =
   { blue: "#3399cc",

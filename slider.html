@@ -12,42 +12,31 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/player_style.css">
   <script src="js/libs/modernizr-2.5.3.min.js"></script>
-  <script type="text/javascript" src="js/d3.v2.js?2.8.1"></script>
-  <script type="text/javascript" src="js/underscore-min.js"></script>
-  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-  <script src="js/jquery.ui.min.js"></script>
-  <style type="text/css">
-
-@import url("css/style.css?1.10.0");
-@import url("css/syntax.css?1.6.0");
-      
-    #content { background: #444; position: relative; }
-    #content, #content > div { width: 900px; height: 500px; }
-    #content > div { position: absolute; top: 0; left: 0; }
-      
-  </style>
 </head>
-<body onload="setup_timeline()">
-  <input type="range" min="0" max="20" value="0" onchange="update(this.value)"></input>
-  
+<body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header id="header">
 
   </header>
-  
-  <div id="content" role="main">
-    <div id="background"></div>
-    <div id="chart"></div>
-    <div id="foreground">
-    </div>
+  <!--
+  <div role="main">
+<p class="player">
+  <span id="playtoggle" />
+  <span id="gutter">
+    <span id="loading" />
+    <span id="handle" class="ui-slider-handle" />
+  </span>
+  <span id="timeleft" />
+</p>
   </div>
-
+  -->
   <footer>
-  </footer>
-  
-  <script type="text/javascript" src="js/timeline-graph.js"></script>
-    <script>
 
+  </footer>
+
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.ui.min.js"></script>
+  <script>
 $(function() {
 	initAudio();
 });
