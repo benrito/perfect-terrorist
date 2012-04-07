@@ -184,8 +184,8 @@ var nodes = [{
     "in_time": 88,
     "out_time": Infinity,
     "source": "new_york",
-    "size": 5,
-    "color": colors.gray
+    "size": 10,
+    "color": colors.red
 },
 {
     "id": "new_york",
