@@ -22,7 +22,7 @@
   <script src="js/videoplayer.js"></script>
 </head>
 <body onload="setup_timeline()">
-  <input type="range" min="0" max="20" value="0" onchange="update(this.value)"></input>
+  <input type="range" min="0" max="168" value="0" style="width:900px" onchange="update(this.value)"></input>
   
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header id="header">
@@ -65,8 +65,8 @@ function initAudio() {
 									  </span>\
 									  <span id="timeleft" />\
 									  <audio preload="metadata">\
-		<source src="videos/blind_willie.mp3" type="audio/mpeg"></source>\
-      <source src="videos/blind_willie.ogg" type="audio/vorbis"></source>\
+		<source src="media/narration.mp3" type="audio/mpeg"></source>\
+      <source src="media/narration.ogg" type="audio/vorbis"></source>\
 										</audio>\
 									</p>';									
 		
@@ -79,6 +79,8 @@ function initAudio() {
 		
 		
 		$(audio).bind('timeupdate', function() {
+
+			update(audio.currentTime);
 			
 			var rem = parseInt(audio.duration - audio.currentTime, 10),
 					pos = (audio.currentTime / audio.duration) * 100,
