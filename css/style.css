@@ -70,8 +70,6 @@ td { vertical-align: top; }
 
 
 
-
-
 @media only screen and (min-width: 35em) {
   
 
@@ -107,3 +105,22 @@ td { vertical-align: top; }
 	width: 100%;
 	height: 90%;
 }
+
+#content { background: #444; position: relative; }
+#content, #content > div { width: 900px; height: 500px; }
+#content > div { position: absolute; top: 0; left: 0; }
+
+header h1 {
+	font-family: 'Oswald', Helvetica, Arial, sans-serif;
+	color: white;
+	font-size: 2em;
+	line-height: 1.4;
+}
+
+header h2 {
+	font-family: 'Oswald', Helvetica, Arial, sans-serif;
+	color: white;
+	font-size: 1.4em;
+	font-weight: 300;
+}
+>>>>>>> abe54a3691044a19d2b79c4794005bf384e96cda
