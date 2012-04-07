@@ -123,4 +123,20 @@ header h2 {
 	font-size: 1.4em;
 	font-weight: 300;
 }
+
+#foreground {
+	overflow: hidden;
+}
+
+
+#background img {
+	opacity: 0.15;
+	width: 100%;
+}
+
+#background a:visible {
+	display: block !important;
+	width: 100%;
+}
+
 >>>>>>> abe54a3691044a19d2b79c4794005bf384e96cda
