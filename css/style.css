@@ -129,8 +129,14 @@ header h2 {
 }
 
 
+
+#background {
+	background-color: #000;
+	overflow: hidden;
+}
+
 #background img {
-	opacity: 0.15;
+	opacity: 0.3;
 	width: 100%;
 }
 
