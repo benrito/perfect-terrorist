@@ -73,7 +73,7 @@ body {
 /* @group default */
 
 body {
-	background-color: black;
+	background-color: #333;
 	font: 13px/20px "Helvetica Neue", Arial, sans-serif;
 	color: #283542;
 	text-shadow: 0 1px 0 #fff;
