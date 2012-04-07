@@ -496,7 +496,7 @@ var update = function(t) {
     $(this).mouseenter(function(e){
       var node_info = node_data[d.id];
       if (!node_info) return;
-      createPopup(self, node_info.title, node_info.image_url, node_info.video_url, d.x, d.y);
+      createPopup(self, node_info.title, node_info.blurb, node_info.image_url, node_info.video_url, d.x, d.y);
     });
   });
   
