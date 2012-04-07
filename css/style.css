@@ -69,7 +69,9 @@ td { vertical-align: top; }
 
 
 
-
+#content { background: #444; position: relative; }
+#content, #content > div { width: 900px; height: 500px; }
+#content > div { position: absolute; top: 0; left: 0; }
 
 
 @media only screen and (min-width: 35em) {
@@ -100,4 +102,23 @@ td { vertical-align: top; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
+}
+
+
+
+
+
+
+header h1 {
+	font-family: 'Oswald', Helvetica, Arial, sans-serif;
+	color: white;
+	font-size: 2em;
+	line-height: 1.4;
+}
+
+header h2 {
+	font-family: 'Oswald', Helvetica, Arial, sans-serif;
+	color: white;
+	font-size: 1.4em;
+	font-weight: 300;
 }

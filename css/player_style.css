@@ -152,19 +152,6 @@ header {
 	background-position: 100px 0;
 }
 
-header h1 {
-	font-family: 'Oswald', Helvetica, Arial, sans-serif;
-	color: white;
-	font-size: 2em;
-}
-
-header h2 {
-	font-family: 'Oswald', Helvetica, Arial, sans-serif;
-	color: white;
-	font-size: 1.4em;
-	font-weight: 300;
-}
-
 .listen header h1 {
 	display: block;
 	position: absolute;
