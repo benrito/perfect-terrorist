@@ -20,6 +20,12 @@
   <script src="js/jquery.ui.min.js"></script>
   <script src="http://vjs.zencdn.net/c/video.js"></script>
   <script src="js/videoplayer.js"></script>
+  <script src="http://cdn.popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+  <script type="text/javascript" src="js/popcorn-images.js"></script>
+  
+  
+  
+  
 </head>
 <body onload="setup_timeline()">
   <!-- <input type="range" min="0" max="168" value="0" style="width:900px" onchange="update(this.value)"></input> -->
@@ -64,7 +70,7 @@ function initAudio() {
 									    <span id="handle" class="ui-slider-handle" />\
 									  </span>\
 									  <span id="timeleft" />\
-									  <audio preload="metadata">\
+									  <audio id="popcorn" preload="metadata">\
 		<source src="media/narration.mp3" type="audio/mpeg"></source>\
       <source src="media/narration.ogg" type="audio/vorbis"></source>\
 										</audio>\
