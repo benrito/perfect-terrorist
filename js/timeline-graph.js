@@ -174,8 +174,8 @@ var nodes = [{
     "in_time": 135,
     "out_time": Infinity,
     "source": "mumbai",
-    "size": 5,
-    "color": colors.gray
+    "size": 15,
+    "color": colors.orange
 },
 {
     "id": "arrest",
@@ -214,8 +214,8 @@ var nodes = [{
     "in_time": 97,
     "out_time": Infinity,
     "source": "second_wife",
-    "size": 5,
-    "color": colors.gray
+    "size": 10,
+    "color": colors.red
 },
 {
     "id": "customs",
