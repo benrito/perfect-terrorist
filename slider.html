@@ -11,30 +11,7 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/player_style.css">
-  <script src="js/libs/modernizr-2.5.3.min.js"></script>
-</head>
-<body>
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-  <header id="header">
-
-  </header>
-  <!--
-  <div role="main">
-<p class="player">
-  <span id="playtoggle" />
-  <span id="gutter">
-    <span id="loading" />
-    <span id="handle" class="ui-slider-handle" />
-  </span>
-  <span id="timeleft" />
-</p>
-  </div>
-  -->
-  <footer>
-
-  </footer>
-
-		<script src="js/jquery.js"></script>
+  <script src="js/jquery.js"></script>
 		<script src="js/jquery.ui.min.js"></script>
   <script>
 $(function() {
@@ -55,13 +32,13 @@ function initAudio() {
 		var player_code = '<p class="player">\
 									  <span id="playtoggle" />\
 									  <span id="gutter">\
-									    <span id="loading" />\
+									    <span id="loading" style="display: none;" />\
 									    <span id="handle" class="ui-slider-handle" />\
 									  </span>\
 									  <span id="timeleft" />\
-									  <audio preload="metadata">\
-		<source src="videos/blind_willie.mp3" type="audio/mpeg"></source>\
-      <source src="videos/blind_willie.ogg" type="audio/vorbis"></source>\
+									  <audio preload="metadata" id="popcorn">\
+		<source src="media/narration.mp3" type="audio/mpeg"></source>\
+      <source src="media/narration.ogg" type="audio/vorbis"></source>\
 										</audio>\
 									</p>';									
 		
@@ -116,5 +93,118 @@ function initAudio() {
 	}	
 }
   </script>
+  <script src="js/libs/modernizr-2.5.3.min.js"></script>
+  <script src="http://cdn.popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+  
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    var pop = Popcorn("#popcorn");
+ 
+
+pop.image({
+id:'',
+start:'1',
+end:'3',
+src:'photos/ss1.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'4',
+end:'6',
+src:'photos/ss2.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'7',
+end:'9',
+src:'photos/ss3.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'10',
+end:'12',
+src:'photos/ss4.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'13',
+end:'15',
+src:'photos/ss5.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'16',
+end:'18',
+src:'photos/ss6.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'19',
+end:'21',
+src:'photos/ss7.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'22',
+end:'24',
+src:'photos/ss8.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'25',
+end:'27',
+src:'photos/ss9.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'28',
+end:'30',
+src:'photos/ss10.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'31',
+end:'33',
+src:'photos/ss11.jpeg',
+target:'webpage'});
+
+      }, false);
+
+      
+</script>
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header id="header">
+
+  </header>
+  <div id="webpage">
+  </div>
+  <!--
+  <div role="main">
+<p class="player">
+  <span id="playtoggle" />
+  <span id="gutter">
+    <span id="loading" />
+    <span id="handle" class="ui-slider-handle" />
+  </span>
+  <span id="timeleft" />
+</p>
+  </div>
+  -->
+  <footer>
+
+  </footer>
 </body>
 </html>
