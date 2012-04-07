@@ -3,6 +3,8 @@ var width = 900,
 
 var tx = 750;
 
+var currentTime = 0;
+
 var debug = false;
 
 var colors =
@@ -124,7 +126,6 @@ var node_source = function(node) {
   return source;
 }
 
-var currentTime = 0;
 var update = function(t) {
   currentTime = t;
   
