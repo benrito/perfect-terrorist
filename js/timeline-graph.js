@@ -3,6 +3,8 @@ var width = 900,
 
 var tx = 750;
 
+var debug = true;
+
 var colors =
   { blue: "#3399cc",
     orange: "#ff9900",
@@ -70,19 +72,47 @@ var edges = [
   }
 ]
 
-// fixup nodes
-nodes.forEach(function(node){
-  node.strokeColor = d3.interpolateRgb(node.color, "#000")(0.1);
-});
 
-var indexed_nodes = _.inject(nodes, function(idxed, node){
-  idxed[node.id] = node;
-  return idxed;
-}, {});
+var indexed_nodes = {};
+var setup_nodes = function() {
+  // fixup nodes
+  nodes.forEach(function(node){
+    node.strokeColor = d3.interpolateRgb(node.color, "#000")(0.1);
+  });
+  
+  indexed_nodes = _.inject(nodes, function(idxed, node){
+    idxed[node.id] = node;
+    return idxed;
+  }, {});
+}
+setup_nodes();
 
 var svg = d3.select("#chart").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+var bg = svg.append("rect").attr("width", width).attr("height", height).style("opacity", 0);
+if (debug) {
+  bg.each(function(d){ $(this).click(function(e){
+    var id = prompt("Node ID", new Date().getTime());
+    if (!id) return;
+
+    var node = {
+      id: id,
+      x: e.offsetX,
+      y: e.offsetY,
+      in_time: currentTime,
+      out_time: Infinity,
+      source: 0,
+      size: 5,
+      color: colors.red
+    }
+
+    nodes.push(node);
+    setup_nodes();
+    update(currentTime);
+  })});
+}
 
 var node_source = function(node) {
   var src = node.source;
@@ -94,10 +124,12 @@ var node_source = function(node) {
   return source;
 }
 
+var currentTime = 0;
 var update = function(t) {
+  currentTime = t;
   
   var current_nodes = _.filter(nodes, function(node){
-    return (node.in_time <= t) && (node.out_time >= t);
+    return (node.in_time <= t) && (node.out_time > t);
   });
   
   var current_node_ids = _.pluck(current_nodes, "id");
@@ -132,6 +164,13 @@ var update = function(t) {
                 .attr("cx", function(d){ return node_source(d).x; })
                 .attr("cy", function(d){ return node_source(d).y; });
   
+  if (debug) {
+    node_enter.each(function(d){ $(this).click(function(e){
+      d.out_time = currentTime;
+      update(currentTime);
+    })});
+  }
+  
   var node_exit = node.exit().transition().duration(tx)              
                       .attr("cx", function(d){ return node_source(d).x; })
                       .attr("cy", function(d){ return node_source(d).y; })
@@ -157,3 +196,16 @@ var update = function(t) {
      .attr("cy", function(d) { return d.y; });
   });
 }
+
+var setup_timeline = function() {
+  if (debug) {
+    var export_box = $("<textarea>").attr("id", "export");
+    var export_button = $("<button>").text("Export").click(function(){
+      console.log(JSON.stringify(nodes));
+      $("#export").val(JSON.stringify(nodes));
+    }).appendTo(document.body);
+    export_box.appendTo(document.body);
+  }
+}
+
+

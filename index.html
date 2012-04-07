@@ -14,6 +14,8 @@
   <script src="js/libs/modernizr-2.5.3.min.js"></script>
   <script type="text/javascript" src="js/d3.v2.js?2.8.1"></script>
   <script type="text/javascript" src="js/underscore-min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="js/jquery.ui.min.js"></script>
   <style type="text/css">
 
 @import url("css/style.css?1.10.0");
@@ -25,7 +27,7 @@
       
   </style>
 </head>
-<body>
+<body onload="setup_timeline()">
   <input type="range" min="0" max="20" value="0" onchange="update(this.value)"></input>
   
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -37,7 +39,7 @@
   <div id="content" role="main">
     <div id="background"></div>
     <div id="chart"></div>
-    <div id="foreground">
+    <!-- <div id="foreground">
       <p class="player">
         <span id="playtoggle" />
         <span id="gutter">
@@ -46,15 +48,13 @@
         </span>
         <span id="timeleft" />
       </p>
-    </div>
+    </div> -->
   </div>
   
   <footer>
   </footer>
   
   <script type="text/javascript" src="js/timeline-graph.js"></script>
-  <script src="js/jquery.js"></script>
-  <script src="js/jquery.ui.min.js"></script>
     <script>
   $(function() {
   	initAudio();
