@@ -20,6 +20,8 @@
   <script src="js/jquery.ui.min.js"></script>
   <script src="http://vjs.zencdn.net/c/video.js"></script>
   <script src="js/videoplayer.js"></script>
+  <script src="js/node-data.js"></script>
+  <script src="js/widget.js"></script>
   <script src="http://cdn.popcornjs.org/code/dist/popcorn-complete.min.js"></script>
   <script type="text/javascript" src="js/popcorn-images.js"></script>
   
@@ -28,7 +30,7 @@
   
 </head>
 <body onload="setup_timeline()">
-  <!-- <input type="range" min="0" max="168" value="0" style="width:900px" onchange="update(this.value)"></input> -->
+  <input type="range" min="0" max="168" value="0" style="width:900px" onchange="update(this.value)"></input>
   
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header id="header">
@@ -39,7 +41,7 @@
   <div id="content" role="main">
     <div id="background"></div>
     <div id="chart"></div>
-    <div id="foreground"></div>
+    <!-- <div id="foreground"></div> -->
   </div>
 
   <footer>

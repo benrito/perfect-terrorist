@@ -107,8 +107,8 @@ td { vertical-align: top; }
 }
 
 #content { background: #444; position: relative; }
-#content, #content > div { width: 900px; height: 500px; }
-#content > div { position: absolute; top: 0; left: 0; }
+#content, #background, #foreground, #chart { width: 900px; height: 500px; }
+#background, #foreground, #chart { position: absolute; top: 0; left: 0; }
 
 header h1 {
 	font-family: 'Oswald', Helvetica, Arial, sans-serif;
@@ -139,4 +139,41 @@ header h2 {
 	width: 100%;
 }
 
->>>>>>> abe54a3691044a19d2b79c4794005bf384e96cda
+
+#node{
+	border:1px solid red;
+width:50px;
+height:50px;
+display:block;
+}
+
+#popup{
+background-color:#ccc;
+position:absolute;	
+border:3px solid #333;
+width:200px;
+-moz-box-shadow: 10px 10px 5px #888;
+-webkit-box-shadow: 10px 10px 5px #888;
+box-shadow: 10px 10px 5px #888;
+margin:10px;
+padding:10px;
+}
+
+}
+#popup h2 {
+	font:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	
+}
+#popup img{
+	max-width: 100px;
+}
+#popup #closebox {
+    color: #333;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+	text-decoration:none;
+	
+	
+}

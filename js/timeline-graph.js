@@ -491,6 +491,15 @@ var update = function(t) {
                 .attr("cx", function(d){ return node_source(d).x; })
                 .attr("cy", function(d){ return node_source(d).y; });
   
+  node_enter.each(function(d) {
+    var self = this;
+    $(this).mouseenter(function(e){
+      var node_info = node_data[d.id];
+      if (!node_info) return;
+      createPopup(self, node_info.title, node_info.image_url, node_info.video_url, d.x, d.y);
+    });
+  });
+  
   if (debug) {
     node_enter.each(function(d){ $(this).click(function(e){
       d.out_time = currentTime;
