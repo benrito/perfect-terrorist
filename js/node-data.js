@@ -62,7 +62,7 @@ var node_data = {
 		title: "Warnings"	
 	},
 	customs:{
-		image_url: "",
+		image_url: "smuggling/False bottom suitcase.jpg",
 		video_url: "TajHotel/711mm/MVI_8031.mp4",
 		blurb: "Headley is briefly detained at customs",
 		title: "Customs"	
@@ -138,5 +138,5 @@ var node_data = {
 		video_url: "TajHotel/711mm/MVI_8031.mp4",
 		blurb: "Headley moves to NYC in 1994 and meets a wife-to-be, Portia",
 		title: "New York City"	
-	},
+	}
 };
