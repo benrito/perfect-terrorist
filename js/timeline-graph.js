@@ -3,7 +3,13 @@ var width = 900,
 
 var tx = 10000;
 
-var color = d3.scale.category20();
+var colors =
+  { blue: "#3399cc",
+    orange: "#ff9900",
+    red: "#cc0033",
+    purple: "#663399",
+    gray: "#8f8f8f"
+  };
 
 var length = 20;
 
@@ -12,33 +18,33 @@ var nodes = [
     x:  100,
     y:  100,
     size: 20,
-    color: "#daa",
     in_time: 0,
-    out_time: 20 },
+    out_time: 20,
+    color: colors.purple },
   { id: 1,
     x:  20,
     y:  20,
     size: 5,
-    color: "#ddd",
     in_time: 5,
     out_time: 20,
-    source: 0 },
+    source: 0,
+    color: colors.orange },
   { id: 2,
     x:  50,
     y:  30,
     size: 5,
-    color: "#eee",
     in_time: 10,
     out_time: 15,
-    source: 1 },
+    source: 1,
+    color: colors.red },
   { id: 3,
     x:  40,
     y:  70,
     size: 5,
-    color: "#ccc",
     in_time: 10,
     out_time: 20,
-    source: 1 }
+    source: 1,
+    color: colors.blue }
 ]
 
 var edges = [
@@ -63,6 +69,11 @@ var edges = [
     value: 2
   }
 ]
+
+// fixup nodes
+nodes.forEach(function(node){
+  node.strokeColor = d3.interpolateRgb(node.color, "#000")(0.1);
+});
 
 var indexed_nodes = _.inject(nodes, function(idxed, node){
   idxed[node.id] = node;
@@ -102,7 +113,7 @@ var update = function(t) {
     
   var link_enter = link.enter().append("line")
                         .attr("class", "link")
-                        .style("stroke", "#000")
+                        .style("stroke", colors.gray)
                                   .attr("x1", function(d) { return node_source(indexed_nodes[d.source]).x; })
                                   .attr("y1", function(d) { return node_source(indexed_nodes[d.source]).y; })
                                   .attr("x2", function(d) { return node_source(indexed_nodes[d.target]).x; })
@@ -117,6 +128,7 @@ var update = function(t) {
                 .attr("class", "node")
                 .attr("r", function(d) { return d.size; })
                 .style("fill", function(d) { return d.color; })
+                .style("stroke", function(d) { return d.strokeColor; })
                 .attr("cx", function(d){ return node_source(d).x; })
                 .attr("cy", function(d){ return node_source(d).y; });
   
