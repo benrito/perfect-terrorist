@@ -747,7 +747,7 @@ footer a:active {
 .player {
 	display: block;
 	height: 100%;
-	width:5px;
+	width:500px;
 	position: absolute;
 	margin: 0px auto;
 	-webkit-box-shadow: 0 -1px 0 rgba(20, 30, 40, .75);
@@ -803,7 +803,7 @@ footer a:active {
 	top: 19px;
 	left: 50px;
 	right: 50px;
-	height: 6px;
+	height: 500px;
 	padding: 2px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;

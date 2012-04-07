@@ -15,9 +15,10 @@
 </head>
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-  <header>
+  <header id="header">
 
   </header>
+  <!--
   <div role="main">
 <p class="player">
   <span id="playtoggle" />
@@ -28,6 +29,7 @@
   <span id="timeleft" />
 </p>
   </div>
+  -->
   <footer>
 
   </footer>
@@ -50,7 +52,7 @@ function initAudio() {
 
 	if (supportsAudio) {
 				
-		var player = '<p class="player">\
+		var player_code = '<p class="player">\
 									  <span id="playtoggle" />\
 									  <span id="gutter">\
 									    <span id="loading" />\
@@ -63,7 +65,7 @@ function initAudio() {
 										</audio>\
 									</p>';									
 		
-		$(player).insertAfter("#body");
+		$(player_code).insertAfter("#header");
 		
 		audio = $('.player audio').get(0);
 		loadingIndicator = $('.player #loading');
@@ -79,14 +81,14 @@ function initAudio() {
 					secs = rem - mins*60;
 			
 			timeleft.text('-' + mins + ':' + (secs < 10 ? '0' + secs : secs));
-			if (!manualSeek) { positionIndicator.css({left: pos + '%'}); }
+			if (!manualSeek) { positionIndicator.css({top: pos + '%'}); }
 			if (!loaded) {
 				loaded = true;
 				
 				$('.player #gutter').slider({
 						value: 0,
 						step: 0.01,
-						orientation: "horizontal",
+						orientation: "vertical",
 						range: "min",
 						max: audio.duration,
 						animate: true,					
@@ -104,9 +106,9 @@ function initAudio() {
 			$("#playtoggle").addClass('playing');		
 		}).bind('pause ended', function() {
 			$("#playtoggle").removeClass('playing');		
-		});		
+		});
 		
-		$("#playtoggle").click(function() {			
+		$("#playtoggle").click(function() {
 			if (audio.paused) {	audio.play();	} 
 			else { audio.pause(); }			
 		});
