@@ -76,7 +76,7 @@ function initAudio() {
 										</audio>\
 									</p>';									
 		
-		$(player_code).insertAfter("#header");
+		$(player_code).appendTo("#foreground");
 		
 		audio = $('.player audio').get(0);
 		loadingIndicator = $('.player #loading');
