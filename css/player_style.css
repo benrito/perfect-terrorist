@@ -79,6 +79,8 @@ body {
 	text-shadow: 0 1px 0 #fff;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
+	width: 900px;
+	margin: 0 auto;
 }
 
 a {
@@ -122,10 +124,12 @@ h3 {
 /* @group header */
 
 header {
-	width: 200px;
+	width: 900px;
 	margin: 0 auto;
 	-webkit-transition: background-position 0.25s linear;
 	-moz-transition: background-position 0.25s linear;
+	height: 4em;
+	margin: 2em 0 0 0;
 }
 
 #listen header {
@@ -150,7 +154,9 @@ header {
 }
 
 header h1 {
-	display: none;
+	font-family: 'Oswald', Helvetica, Arial, sans-serif;
+	color: white;
+	font-size: 2em;
 }
 
 .listen header h1 {
