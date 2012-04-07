@@ -41,7 +41,7 @@
   <div id="content" role="main">
     <div id="background"></div>
     <div id="chart"></div>
-    <!-- <div id="foreground"></div> -->
+    <div id="foreground"></div>
   </div>
 
   <footer>
@@ -66,12 +66,7 @@ function initAudio() {
 	if (supportsAudio) {
 				
 		var player_code = '<p class="player">\
-									  <span id="playtoggle" />\
-									  <span id="gutter">\
-									    <span id="loading" />\
-									    <span id="handle" class="ui-slider-handle" />\
-									  </span>\
-									  <span id="timeleft" />\
+		                    <span id="playhead" />\
 									  <audio id="popcorn" preload="metadata">\
 		<source src="media/narration.mp3" type="audio/mpeg"></source>\
       <source src="media/narration.ogg" type="audio/vorbis"></source>\
@@ -82,7 +77,7 @@ function initAudio() {
 		
 		audio = $('.player audio').get(0);
 		loadingIndicator = $('.player #loading');
-		positionIndicator = $('.player #handle');
+		positionIndicator = $('.player #playhead');
 		timeleft = $('.player #timeleft');
 		
 		

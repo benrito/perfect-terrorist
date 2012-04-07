@@ -177,3 +177,16 @@ padding:10px;
 	
 	
 }
+
+.player {
+  margin-left: -5px;
+}
+
+#playhead {
+  display: block;
+  width: 44px;
+  height: 44px;
+  background-image: url(../img/playhead.png);
+  position: absolute;
+  left: -22px;
+}
