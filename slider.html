@@ -1,0 +1,213 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/player_style.css">
+  <script src="js/jquery.js"></script>
+		<script src="js/jquery.ui.min.js"></script>
+  <script>
+$(function() {
+	initAudio();
+});
+function initAudio() {
+	
+	var supportsAudio = !!document.createElement('audio').canPlayType,
+			audio,
+			loadingIndicator,
+			positionIndicator,
+			timeleft,
+			loaded = false,
+			manualSeek = false;
+
+	if (supportsAudio) {
+				
+		var player_code = '<p class="player">\
+									  <span id="playtoggle" />\
+									  <span id="gutter">\
+									    <span id="loading" style="display: none;" />\
+									    <span id="handle" class="ui-slider-handle" />\
+									  </span>\
+									  <span id="timeleft" />\
+									  <audio preload="metadata" id="popcorn">\
+		<source src="media/narration.mp3" type="audio/mpeg"></source>\
+      <source src="media/narration.ogg" type="audio/vorbis"></source>\
+										</audio>\
+									</p>';									
+		
+		$(player_code).insertAfter("#header");
+		
+		audio = $('.player audio').get(0);
+		loadingIndicator = $('.player #loading');
+		positionIndicator = $('.player #handle');
+		timeleft = $('.player #timeleft');
+		
+		
+		$(audio).bind('timeupdate', function() {
+			
+			var rem = parseInt(audio.duration - audio.currentTime, 10),
+					pos = (audio.currentTime / audio.duration) * 100,
+					mins = Math.floor(rem/60,10),
+					secs = rem - mins*60;
+			
+			timeleft.text('-' + mins + ':' + (secs < 10 ? '0' + secs : secs));
+			if (!manualSeek) { positionIndicator.css({top: pos + '%'}); }
+			if (!loaded) {
+				loaded = true;
+				
+				$('.player #gutter').slider({
+						value: 0,
+						step: 0.01,
+						orientation: "vertical",
+						range: "min",
+						max: audio.duration,
+						animate: true,					
+						slide: function(){							
+							manualSeek = true;
+						},
+						stop:function(e,ui){
+							manualSeek = false;					
+							audio.currentTime = ui.value;
+						}
+					});
+			}
+			
+		}).bind('play',function(){
+			$("#playtoggle").addClass('playing');		
+		}).bind('pause ended', function() {
+			$("#playtoggle").removeClass('playing');		
+		});
+		
+		$("#playtoggle").click(function() {
+			if (audio.paused) {	audio.play();	} 
+			else { audio.pause(); }			
+		});
+
+	}	
+}
+  </script>
+  <script src="js/libs/modernizr-2.5.3.min.js"></script>
+  <script src="http://cdn.popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+  
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    var pop = Popcorn("#popcorn");
+ 
+
+pop.image({
+id:'',
+start:'13',
+end:'14.5',
+src:'photos/Pakistan/Berlin Flight Changes.jpg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'14.5',
+end:'16.5',
+src:'photos/Early Years Headley/ss9.jpg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'16.5',
+end:'19.5',
+src:'photos/Drugs 2.jpg',
+target:'webpage'});
+
+// LOOK AT THIS 
+pop.image({
+id:'',
+start:'19.5',
+end:'23',
+src:'photos/cuffs.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'23',
+end:'27',
+src:'photos/DEA/interrogation.jpg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'33',
+end:'43',
+src:'photos/Early Years Headley/ss6.jpg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'53',
+end:'56',
+src:'photos/mentor.jpg',
+target:'webpage'});
+
+/*
+pop.image({
+id:'',
+start:'',
+end:'24',
+src:'photos/ss8.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'25',
+end:'27',
+src:'photos/ss9.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'28',
+end:'30',
+src:'photos/ss10.jpeg',
+target:'webpage'});
+
+pop.image({
+id:'',
+start:'31',
+end:'33',
+src:'photos/ss11.jpeg',
+target:'webpage'});
+*/
+
+      }, false);
+
+      
+</script>
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header id="header">
+
+  </header>
+  <div id="webpage">
+  </div>
+  <!--
+  <div role="main">
+<p class="player">
+  <span id="playtoggle" />
+  <span id="gutter">
+    <span id="loading" />
+    <span id="handle" class="ui-slider-handle" />
+  </span>
+  <span id="timeleft" />
+</p>
+  </div>
+  -->
+  <footer>
+
+  </footer>
+</body>
+</html>
