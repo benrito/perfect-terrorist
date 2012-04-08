@@ -11,28 +11,13 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/player_style.css">
-  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-  <script src="js/libs/modernizr-2.5.3.min.js"></script>
-  <script type="text/javascript" src="js/d3.v2.js?2.8.1"></script>
-  <script type="text/javascript" src="js/underscore-min.js"></script>
-  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-  <script src="js/jquery.ui.min.js"></script>
-  <script src="http://vjs.zencdn.net/c/video.js"></script>
-  <script src="js/videoplayer.js"></script>
-  <script src="js/node-data.js"></script>
-  <script src="js/widget.js"></script>
-  <script src="http://cdn.popcornjs.org/code/dist/popcorn-complete.min.js"></script>
-  <script type="text/javascript" src="js/popcorn-images.js"></script>
-  
-  
-  
-  
+
+
 </head>
 <body onload="setup_timeline()">
   <input type="range" min="0" max="168" value="0" style="width:900px" onchange="update(this.value)"></input>
   
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header id="header">
 	<h1>A Perfect Terrorist</h1>
 	<h2>The Web of David Coleman Headley</h2>
@@ -45,10 +30,49 @@
   </div>
 
   <footer>
-  </footer>
   
+  <!--the visualization--!>
+
+  <script type="text/javascript" src="js/d3.v2.js?2.8.1"></script>
+  <script type="text/javascript" src="js/underscore-min.js"></script>
   <script type="text/javascript" src="js/timeline-graph.js"></script>
-    <script>
+  <script src="js/node-data.js"></script>
+  
+<!--the page load heavy jQuery, yikes--!>
+  
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="js/jquery.ui.min.js"></script>
+  <script src="js/jquery.videoBG.js"></script>
+
+<!--the tooltips for mouseover on story nodes. Great to give this a parser and make less DOM dependent.--!>
+
+  <script src="js/widget.js"></script>
+
+<!--the Popcorn for time-aligned media--!>
+
+  <script src="http://cdn.popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+  <script type="text/javascript" src="js/popcorn-images.js"></script>
+  
+<!--the totally unnecessary video background--!>
+
+
+  <script>
+  
+ $(document).ready(function() {
+
+$('body').videoBG({
+		position:"fixed",
+		zIndex:-1,
+		mp4:'media/CuffeParade/background.webm',
+		opacity:0.5
+	});
+	
+})
+  </script>
+
+<!--the media player
+
+<script>
 
 $(function() {
 	initAudio();
@@ -126,5 +150,7 @@ function initAudio() {
 	}	
 }
   </script>
+  --!>
+</footer>
 </body>
 </html>
